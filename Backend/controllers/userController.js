@@ -12,8 +12,8 @@ const sendEmailFP = require("../utils/nodemailer");
 const keys = require("../config/keys");
 
 //Validation
-const validateLoginInput = require("../validation/Login");
-const validateRegisterInput = require("../validation/Register");
+const validateLoginInput = require("../validation/login");
+const validateRegisterInput = require("../validation/register");
 const validateOTP = require("../validation/otpValidation");
 const validateForgotPassword = require("../validation/forgotPassword");
 const validateUpdatePassword = require("../validation/updatePassword");

@@ -28,6 +28,7 @@ app.use(function (req, res, next) {
 
 // Routes
 const userRoutes = require("./routes/userRoutes");
+const feedbackRoutes = require("./routes/feedbackRouter");
 
 //Passport Middleware
 app.use(passport.initialize());
@@ -40,6 +41,7 @@ app.use(morgan("tiny"));
 
 //ROUTES
 app.use("/api/user", userRoutes);
+app.use("/api/user", feedbackRoutes);
 
 //Catching 404 Error
 app.use((req, res, next) => {
