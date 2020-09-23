@@ -20,6 +20,10 @@ const userSchema = new Schema({
   avatar: {
     type: String,
   },
+  isConfirmed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = model("user", userSchema);

@@ -5,6 +5,8 @@ const router = Router();
 
 const {
   userRegister,
+  userConfirmation,
+  verifyResendToken,
   userLogin,
   forgotPassword,
   postOTP,
@@ -12,6 +14,10 @@ const {
 } = require("../controllers/userController");
 
 router.post("/register", userRegister);
+
+router.get("/userConformation/:token", userConfirmation);
+
+router.post("/verifyResendToken", verifyResendToken);
 
 router.post("/login", userLogin);
 

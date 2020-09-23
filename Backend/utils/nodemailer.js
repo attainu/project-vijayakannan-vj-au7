@@ -11,16 +11,19 @@ const transport = nodemailer.createTransport({
   },
 });
 
-const sendMailRG = async (email, secretToken, mode) => {
+const sendMailRG = async (email, token, mode) => {
   try {
+    // const url = `http://localhost:5000/api/user/userConformation/${token}`;
     if (mode == "REGISTER") {
       return await transport.sendMail({
         from: process.env.GMAIL_USERNAME,
         to: email,
         subject: "Welcome to VS Med Care",
         html: `
-        <h1>Reset Password</h1>
-        <p> Here is your otp to change the password ${secretToken} </p>
+        <h1>Verify the Mail ID</h1>
+        <p>Please click link to confirm your email: 
+            <a href="http://localhost:5000/api/user/userConformation/${token}">Click here to verify</a>
+        </p>
       `,
       });
     }
