@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const passport = require("passport");
+const upload = require('../utils/multer')
 
 const router = Router();
 
@@ -12,6 +13,10 @@ const {
   postOTP,
   updatePassword,
 } = require("../controllers/userController");
+
+const uploadDoc = require("../controllers/doctorController")
+
+
 
 router.post("/register", userRegister);
 
@@ -30,5 +35,10 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   updatePassword
 );
+
+// router.post('/uploadPost', upload.single("imgUrl"), uploadDoc);
+router.post('/uploadPost', upload.single("imgUrl"),function(req, res){
+  uploadDoc
+});
 
 module.exports = router;
