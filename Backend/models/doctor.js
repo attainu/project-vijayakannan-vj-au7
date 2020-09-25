@@ -17,10 +17,10 @@ const doctorSchema = new Schema({
     required: true,
   },
 
-  imgUrl: {
-    type: String,
-    required: true
-  },
+  // imgUrl: {
+  //   type: String,
+  //   required: true
+  // },
 
 });
 
