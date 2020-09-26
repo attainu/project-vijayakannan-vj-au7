@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const passport = require("passport");
-const upload = require('../utils/multer')
 
 const router = Router();
 
@@ -14,13 +13,11 @@ const {
   updatePassword,
 } = require("../controllers/userController");
 
-const uploadDoc = require("../controllers/doctorController")
-
-
+const { uploadDoc } = require("../controllers/doctorController");
 
 router.post("/register", userRegister);
 
-router.get("/userConformation/:token", userConfirmation);
+router.post("/userConformation/:token", userConfirmation);
 
 router.post("/verifyResendToken", verifyResendToken);
 
@@ -37,8 +34,6 @@ router.post(
 );
 
 // router.post('/uploadPost', upload.single("imgUrl"), uploadDoc);
-router.post('/uploadPost', upload.single("imgUrl"),function(req, res){
-  uploadDoc
-});
+router.post("/uploadDoc", uploadDoc);
 
 module.exports = router;
