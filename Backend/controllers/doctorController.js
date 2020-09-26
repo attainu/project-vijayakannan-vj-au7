@@ -14,12 +14,12 @@ module.exports = {
         file.tempFilePath,
         { resource_type: "image" },
         async function (err, result) {
-          console.log(result);
+          //console.log(result);
           //Data is saved to the database with image url
           const newDoc = await Doctor.create({
             name: name,
             desc: desc,
-            imgUrl: result.url,
+            imgUrl: result.secure_url,
           });
           return res.status(200).json({ message: `${newDoc}` });
         }

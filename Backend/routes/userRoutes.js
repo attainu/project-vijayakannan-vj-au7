@@ -13,11 +13,9 @@ const {
   updatePassword,
 } = require("../controllers/userController");
 
-const { uploadDoc } = require("../controllers/doctorController");
-
 router.post("/register", userRegister);
 
-router.post("/userConformation/:token", userConfirmation);
+router.get("/userConformation/:token", userConfirmation);
 
 router.post("/verifyResendToken", verifyResendToken);
 
@@ -32,8 +30,5 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   updatePassword
 );
-
-// router.post('/uploadPost', upload.single("imgUrl"), uploadDoc);
-router.post("/uploadDoc", uploadDoc);
 
 module.exports = router;
