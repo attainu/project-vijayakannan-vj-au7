@@ -39,7 +39,7 @@ module.exports = {
       //default avatar is set
       const avatar = gravatar.url(email, { s: "200", r: "pg", d: "mm" });
       //token generation
-      const token = jwt.sign({ name, email, password }, keys.secretKey, {
+      const token = jwt.sign({ name, email }, keys.secretKey, {
         expiresIn: 120,
       });
       //sending a verfication mail using nodemailer

@@ -30,7 +30,7 @@ const validateRegisterInput = (data) => {
     errors.contact = "Contact field is required";
   }
 
-  
+ 
 
   if (!Validator.isLength(data.contact, { min: 10, max: 10 })) {
     errors.contact = "contact must be 10 numbers";
@@ -39,7 +39,7 @@ const validateRegisterInput = (data) => {
   if (Validator.isEmpty(data.password)) {
     errors.password = "Password field is required";
   }
-
+  
   return {
     errors,
     isValid: isEmpty(errors),
