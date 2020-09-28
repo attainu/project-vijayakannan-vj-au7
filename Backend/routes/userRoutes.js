@@ -11,7 +11,6 @@ const {
   forgotPassword,
   postOTP,
   updatePassword,
-  UpdateContact,
 } = require("../controllers/userController");
 
 router.post("/register", userRegister);
@@ -31,6 +30,5 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   updatePassword
 );
-router.patch("/ContactUpdate", passport.authenticate("jwt", { session: false }), UpdateContact);
 
 module.exports = router;

@@ -10,12 +10,6 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
-  contact: {
-    type: Number,
-    required: true,
-    minlength:10,
-    maxlength:10,
-  },
   password: {
     type: String,
     required: true,

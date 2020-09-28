@@ -28,7 +28,7 @@ module.exports = {
         return res.status(400).json(errors);
       }
       //checks weather the user is already exist
-      const { name, email, password, contact } = req.body;
+      const { name, email, password } = req.body;
       const user = await User.findOne({ email });
       if (user) {
         errors.email = "Email already exist";
@@ -39,7 +39,7 @@ module.exports = {
       //default avatar is set
       const avatar = gravatar.url(email, { s: "200", r: "pg", d: "mm" });
       //token generation
-      const token = jwt.sign({ name, email }, keys.secretKey, {
+      const token = jwt.sign({ name, email, password }, keys.secretKey, {
         expiresIn: 120,
       });
       //sending a verfication mail using nodemailer
@@ -48,7 +48,6 @@ module.exports = {
       const newUser = await new User({
         name,
         email,
-        contact,
         password: hashedPassword,
         avatar,
         // confirmToken: token,
@@ -264,16 +263,6 @@ module.exports = {
         .status(400)
         .json({ message: `Error in updatePassword${err.message}` });
     }
-  },
-  UpdateContact: async (req, res) => {
-    try{
-
-    await User.findOneAndUpdate(req.user.email,{contact:req.body.contact})
-      res.json('contact updated Succesfully');
-    }catch(err){
-      res.json({ message: err })
-      // res.json("error")
-    }    
   },
 };
 //-----------------------------------------------------------------------------------------------
