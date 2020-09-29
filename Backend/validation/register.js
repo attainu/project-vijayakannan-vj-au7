@@ -4,6 +4,7 @@ const isEmpty = require("./isEmpty");
 const validateRegisterInput = (data) => {
   let errors = {};
   data.name = !isEmpty(data.name) ? data.name : "";
+  data.contact = !isEmpty(data.contact) ? data.contact : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.contact = !isEmpty(data.contact) ? data.contact : "";
@@ -14,6 +15,14 @@ const validateRegisterInput = (data) => {
 
   if (Validator.isEmpty(data.name)) {
     errors.name = "Name field is required";
+  }
+
+  if (Validator.isEmpty(data.contact)) {
+    errors.contact = "Contact field is required";
+  }
+
+  if (!Validator.isLength(data.contact, { min: 10, max: 10 })) {
+    errors.contact = "contact must be 10 numbers";
   }
 
   if (!Validator.isEmail(data.email)) {

@@ -4,6 +4,8 @@ const upload = require('../utils/multer')
 
 const router = Router();
 
+//---------------------------- user auth controller function -------------------------
+
 const {
   userRegister,
   userConfirmation,
@@ -12,8 +14,20 @@ const {
   forgotPassword,
   postOTP,
   updatePassword,
+<<<<<<< HEAD
   UpdateContact,
 } = require("../controllers/userController");
+=======
+} = require("../controllers/userAuthController");
+
+//---------------------------- user controller function ------------------------------
+
+const { contactUpdate } = require("../controllers/userController");
+
+//---------------------------- user auth controller function ------------------------------
+
+// user routes
+>>>>>>> e911c489d2cb54a7bdd2ac1cdd75be9468f174c7
 
 const uploadDoc = require("../controllers/doctorController")
 
@@ -37,10 +51,20 @@ router.post(
   updatePassword
 );
 
+<<<<<<< HEAD
 // router.post('/uploadPost', upload.single("imgUrl"), uploadDoc);
 router.post('/uploadPost', upload.single("imgUrl"),function(req, res){
   uploadDoc
 });
 
 router.patch('/update/:id', UpdateContact);
+=======
+router.post(
+  "/contactUpdate",
+  passport.authenticate("jwt", { session: false }),
+  contactUpdate
+);
+
+//exporting the user routes
+>>>>>>> e911c489d2cb54a7bdd2ac1cdd75be9468f174c7
 module.exports = router;
