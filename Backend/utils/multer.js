@@ -2,7 +2,7 @@ let multer = require("multer");
 
 //Specify the storage engine
 let upload = multer({
-    storage: multer.memoryStorage(),
+    storage: multer.memoryStorage().single,
     limits: {
         fileSize: 1024 * 1024 * 5
     },

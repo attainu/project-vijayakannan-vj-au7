@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
-const fileupload = require("express-fileupload");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+
 dotenv.config();
 require("./database/mongodb");
 
@@ -12,14 +12,6 @@ require("./database/mongodb");
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-//temp file declaration
-app.use(
-  fileupload({
-    useTempFiles: true,
-    limits: { fileSize: 50 * 1024 * 1024 },
-  })
-);
-
 // app.use(cookieParser());
 
 //Cors method
@@ -38,7 +30,6 @@ app.use(function (req, res, next) {
 // Routes
 const userRoutes = require("./routes/userRoutes");
 const feedbackRoutes = require("./routes/feedbackRouter");
-const doctorRoutes = require("./routes/doctorRoutes");
 
 //Passport Middleware
 app.use(passport.initialize());
@@ -52,7 +43,6 @@ app.use(morgan("tiny"));
 //ROUTES
 app.use("/api/user", userRoutes);
 app.use("/api/user", feedbackRoutes);
-app.use("/api/admin", doctorRoutes);
 
 //Catching 404 Error
 app.use((req, res, next) => {

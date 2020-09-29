@@ -5,22 +5,23 @@ const doctorSchema = new Schema({
     type: String,
     required: true,
   },
-
+  
   // email: {
   //   type: String,
   //   required: true,
   //   unique: true,
   // },
 
-  desc: {
+  description: {
     type: String,
     required: true,
   },
 
   imgUrl: {
     type: String,
-    required: true,
+    required: true
   },
+
 });
 
 module.exports = model("doctor", doctorSchema);

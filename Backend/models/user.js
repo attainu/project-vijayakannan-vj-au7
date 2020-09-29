@@ -10,6 +10,10 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
+  contact: {
+    type: Number,
+    required: true,
+  },
   password: {
     type: String,
     required: true,

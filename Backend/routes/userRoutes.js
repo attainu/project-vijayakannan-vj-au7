@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const passport = require("passport");
+const upload = require('../utils/multer')
 
 const router = Router();
 
@@ -11,7 +12,12 @@ const {
   forgotPassword,
   postOTP,
   updatePassword,
+  UpdateContact,
 } = require("../controllers/userController");
+
+const uploadDoc = require("../controllers/doctorController")
+
+
 
 router.post("/register", userRegister);
 
@@ -31,4 +37,10 @@ router.post(
   updatePassword
 );
 
+// router.post('/uploadPost', upload.single("imgUrl"), uploadDoc);
+router.post('/uploadPost', upload.single("imgUrl"),function(req, res){
+  uploadDoc
+});
+
+router.patch('/update/:id', UpdateContact);
 module.exports = router;

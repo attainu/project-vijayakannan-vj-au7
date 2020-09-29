@@ -28,7 +28,7 @@ module.exports = {
         return res.status(400).json(errors);
       }
       //checks weather the user is already exist
-      const { name, email, password } = req.body;
+      const { name, email, password, contact } = req.body;
       const user = await User.findOne({ email });
       if (user) {
         errors.email = "Email already exist";
@@ -49,6 +49,7 @@ module.exports = {
         name,
         email,
         password: hashedPassword,
+        contact,
         avatar,
         // confirmToken: token,
       });
@@ -264,5 +265,17 @@ module.exports = {
         .json({ message: `Error in updatePassword${err.message}` });
     }
   },
+
+  UpdateContact: async (req, res) => {
+    try{
+
+    await User.findByIdAndUpdate(req.params.id, {$set: {contact:req.body.contact}})
+      res.json('contact updated Succesfully');
+    }catch(err){
+      res.json({ message: err })
+      // res.json("error")
+    }    
+  },
 };
 //-----------------------------------------------------------------------------------------------
+
