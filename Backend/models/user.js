@@ -15,11 +15,8 @@ const userSchema = new Schema({
   contact: {
     type: Number,
     required: true,
-<<<<<<< HEAD
-=======
     minlength: 10,
     maxlength: 10,
->>>>>>> e911c489d2cb54a7bdd2ac1cdd75be9468f174c7
   },
   password: {
     type: String,

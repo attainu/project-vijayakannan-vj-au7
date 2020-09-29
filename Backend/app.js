@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
+const fileupload = require("express-fileupload");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
-
 dotenv.config();
 require("./database/mongodb");
 
@@ -12,8 +12,6 @@ require("./database/mongodb");
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-<<<<<<< HEAD
-=======
 //temp file declaration
 app.use(
   fileupload({
@@ -22,7 +20,6 @@ app.use(
   })
 );
 
->>>>>>> e911c489d2cb54a7bdd2ac1cdd75be9468f174c7
 // app.use(cookieParser());
 
 //Cors method
@@ -41,12 +38,8 @@ app.use(function (req, res, next) {
 // Routes
 const publicRoutes = require("./routes/publicRouter");
 const userRoutes = require("./routes/userRoutes");
-<<<<<<< HEAD
-const feedbackRoutes = require("./routes/feedbackRouter");
-=======
 const adminRoutes = require("./routes/adminRoutes");
 const superAdminRoutes = require("./routes/superAdminRoutes");
->>>>>>> e911c489d2cb54a7bdd2ac1cdd75be9468f174c7
 
 //Passport Middleware
 app.use(passport.initialize());
@@ -60,12 +53,8 @@ app.use(morgan("tiny"));
 //ROUTES
 app.use("/api/public", publicRoutes);
 app.use("/api/user", userRoutes);
-<<<<<<< HEAD
-app.use("/api/user", feedbackRoutes);
-=======
 app.use("/api/admin", adminRoutes);
 app.use("/api/superadmin", superAdminRoutes);
->>>>>>> e911c489d2cb54a7bdd2ac1cdd75be9468f174c7
 
 //Catching 404 Error
 app.use((req, res, next) => {
