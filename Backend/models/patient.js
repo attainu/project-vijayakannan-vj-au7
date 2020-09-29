@@ -1,16 +1,24 @@
 const { model, Schema } = require("mongoose");
 
-const userSchema = new Schema({
+const patientSchema = new Schema({
   name: {
     type: String,
     required: true,
     minlength: 3,
     maxlength: 32,
   },
+  gender: {
+    type: String,
+    enum: ["male", "female", "Male", "Female"],
+    required: true,
+  },
+  dob: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   contact: {
     type: Number,
@@ -18,25 +26,10 @@ const userSchema = new Schema({
     minlength: 10,
     maxlength: 10,
   },
-  password: {
+  msg: {
     type: String,
     required: true,
-    minlength: 6,
-  },
-  avatar: {
-    type: String,
-  },
-  otp: {
-    type: String,
-  },
-  role: {
-    type: String,
-    default: "user",
-  },
-  isConfirmed: {
-    type: Boolean,
-    default: false,
   },
 });
 
-module.exports = model("user", userSchema);
+module.exports = model("patient", patientSchema);

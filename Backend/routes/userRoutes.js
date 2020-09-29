@@ -3,6 +3,8 @@ const passport = require("passport");
 
 const router = Router();
 
+//---------------------------- user auth controller function -------------------------
+
 const {
   userRegister,
   userConfirmation,
@@ -11,7 +13,15 @@ const {
   forgotPassword,
   postOTP,
   updatePassword,
-} = require("../controllers/userController");
+} = require("../controllers/userAuthController");
+
+//---------------------------- user controller function ------------------------------
+
+const { contactUpdate } = require("../controllers/userController");
+
+//---------------------------- user auth controller function ------------------------------
+
+// user routes
 
 router.post("/register", userRegister);
 
@@ -31,4 +41,11 @@ router.post(
   updatePassword
 );
 
+router.post(
+  "/contactUpdate",
+  passport.authenticate("jwt", { session: false }),
+  contactUpdate
+);
+
+//exporting the user routes
 module.exports = router;

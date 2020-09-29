@@ -1,22 +1,33 @@
 const { model, Schema } = require("mongoose");
 
 const doctorSchema = new Schema({
+  docid: {
+    type: Number,
+    unique: true,
+  },
   name: {
     type: String,
     required: true,
+    minlength: 3,
+    maxlength: 32,
   },
-
-  // email: {
-  //   type: String,
-  //   required: true,
-  //   unique: true,
-  // },
-
-  desc: {
+  department: {
     type: String,
     required: true,
   },
-
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  leave: {
+    type: Array,
+    default: [],
+  },
   imgUrl: {
     type: String,
     required: true,

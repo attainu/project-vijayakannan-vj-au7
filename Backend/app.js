@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(
   fileupload({
     useTempFiles: true,
-    limits: { fileSize: 50 * 1024 * 1024 },
+    limits: { fileSize: 50 * 1024 },
   })
 );
 
@@ -36,9 +36,10 @@ app.use(function (req, res, next) {
 });
 
 // Routes
+const publicRoutes = require("./routes/publicRouter");
 const userRoutes = require("./routes/userRoutes");
-const feedbackRoutes = require("./routes/feedbackRouter");
-const doctorRoutes = require("./routes/doctorRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const superAdminRoutes = require("./routes/superAdminRoutes");
 
 //Passport Middleware
 app.use(passport.initialize());
@@ -50,9 +51,10 @@ require("./config/passport")(passport);
 app.use(morgan("tiny"));
 
 //ROUTES
+app.use("/api/public", publicRoutes);
 app.use("/api/user", userRoutes);
-app.use("/api/user", feedbackRoutes);
-app.use("/api/admin", doctorRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/superadmin", superAdminRoutes);
 
 //Catching 404 Error
 app.use((req, res, next) => {
