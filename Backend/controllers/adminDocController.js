@@ -4,6 +4,8 @@ const cloudinary = require("../utils/cloudinary");
 //model
 const Doctor = require("../models/doctor");
 
+const validateImage = require("../validation/imgvalidation");
+
 //Validation
 //const validateLeaveInput = require("../validation/leave");
 
@@ -13,22 +15,42 @@ module.exports = {
       //reading the data from the body
       const { name, department, email, description } = req.body;
       //reading the image file
-      const file = req.files.image;
-      //console.log(file);
-      cloudinary.uploader.upload(
+
+      const file = req.files.file;
+      // const file = req.files.image;
+      const errors = validateImage(file);
+      if (errors != null) {
+        return res.status(400).json(errors);
+      }
+
+      // uploading image to cloud
+      await cloudinary.uploader.upload(
         file.tempFilePath,
         { resource_type: "image" },
         async function (err, result) {
-          //console.log(result);
+          function generateDocId() {
+            var digits = "0123456789";
+            let DocId = "";
+            for (let i = 0; i < 6; i++) {
+              DocId += digits[Math.floor(Math.random() * 10)];
+            }
+            return DocId;
+          }
+          const DocId = await generateDocId();
+          // Doctor.docid = DocId
+
           //Data is saved to the database with image url
-          const newDoc = await Doctor.create({
+          await Doctor.create({
+            docid: DocId,
             name,
             department,
             email,
             description,
             imgUrl: result.secure_url,
           });
-          return res.status(200).json({ message: `${newDoc}` });
+          return res
+            .status(200)
+            .json({ message: "Doctor detail with image uploaded Sucessfully" });
         }
       );
     } catch (err) {

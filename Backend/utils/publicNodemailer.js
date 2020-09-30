@@ -36,7 +36,7 @@ const sendMailFB = async (feedback, mode) => {
         <div style="font-size:18px;">
         <p><b>Name</b>    : ${feedback.name} </p>
         <p><b>Email</b>   : ${feedback.email} </p>
-        <p><b>Message</b> : ${feedback.feedback} </p>
+        <p><b>Message</b> : ${feedback} </p>
         </div>
         </body>
       `,

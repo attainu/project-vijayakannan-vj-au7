@@ -3,7 +3,7 @@ const { model, Schema } = require("mongoose");
 const doctorSchema = new Schema({
   docid: {
     type: Number,
-    unique: true,
+    required:true,
   },
   name: {
     type: String,
@@ -18,7 +18,7 @@ const doctorSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
+    // unique:true
   },
   description: {
     type: String,

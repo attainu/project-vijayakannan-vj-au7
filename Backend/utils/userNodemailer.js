@@ -22,7 +22,7 @@ const sendMailRG = async (email, token, mode) => {
         html: `
         <h1>Verify the Mail ID</h1>
         <p>Please click link to confirm your email: 
-            <a href="https://vs-medcare.herokuapp.com/api/user/userConformation/${token}">Click here to verify</a>
+            <a href="http://localhost:5000/api/user/userConformation/${token}">Click here to verify</a>
         </p>
       `,
       });
