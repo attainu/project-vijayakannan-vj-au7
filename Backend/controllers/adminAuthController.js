@@ -76,7 +76,7 @@ module.exports = {
       Admin.findOneAndUpdate(
         { email: email },
         { isConfirmed: true },
-        (err) => {
+        (err, doc) => {
           if (err) {
             console.log("Something wrong when updating data!");
           }

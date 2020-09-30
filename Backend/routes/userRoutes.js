@@ -15,11 +15,19 @@ const {
   updatePassword,
 } = require("../controllers/userAuthController");
 
-//---------------------------- user controller function ------------------------------
+//---------------------------- user controller function ----------------------------
 
 const { contactUpdate } = require("../controllers/userController");
 
-//---------------------------- user auth controller function ------------------------------
+//---------------------------- appoinment controller function -----------------------
+
+const {
+  appoCheck,
+  appoBook,
+  appoCancel,
+} = require("../controllers/appoimentController");
+
+//---------------------------- user auth routes -------------------------
 
 // user routes
 
@@ -41,11 +49,21 @@ router.post(
   updatePassword
 );
 
+//---------------------------- user routes -------------------------
+
 router.post(
   "/contactUpdate",
   passport.authenticate("jwt", { session: false }),
   contactUpdate
 );
+
+//---------------------------- appoinment route----------------------
+
+router.post("/appocheck", appoCheck);
+
+router.post("/appobook", appoBook);
+
+router.post("/appocancel", appoCancel);
 
 //exporting the user routes
 module.exports = router;

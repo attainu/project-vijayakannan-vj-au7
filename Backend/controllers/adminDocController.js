@@ -4,10 +4,11 @@ const cloudinary = require("../utils/cloudinary");
 //model
 const Doctor = require("../models/doctor");
 
-const validateImage = require("../validation/imgvalidation");
-
 //Validation
-//const validateLeaveInput = require("../validation/leave");
+const validateImage = require("../validation/imgValidation");
+const validateLeaveInput = require("../validation/leave");
+
+//controller functions
 
 module.exports = {
   uploadDoc: async (req, res, next) => {
@@ -15,7 +16,6 @@ module.exports = {
       //reading the data from the body
       const { name, department, email, description } = req.body;
       //reading the image file
-
       const file = req.files.file;
       // const file = req.files.image;
       const errors = validateImage(file);
@@ -89,7 +89,6 @@ module.exports = {
       } else {
         return res.status(400).json({ message: "already Leave Marked" });
       }
-      A;
       //success message
       res.status(200).json({
         message: "Leave marked successfully",
