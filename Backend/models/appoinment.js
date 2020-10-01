@@ -2,6 +2,11 @@ const { model, Schema, ObjectId } = require("mongoose");
 
 const appoSchema = new Schema(
   {
+    appoId: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
     appoDate: {
       type: String,
       required: true,
@@ -21,7 +26,7 @@ const appoSchema = new Schema(
       required: true,
     },
     paitent: {
-      name: {
+      pname: {
         type: String,
         required: true,
         minlength: 3,
@@ -51,12 +56,12 @@ const appoSchema = new Schema(
         required: true,
       },
     },
-    user: {
+    userID: {
       type: ObjectId,
       ref: "User",
       required: true,
     },
-    doctor: {
+    doctorID: {
       type: ObjectId,
       ref: "Doctor",
       required: true,

@@ -17,7 +17,7 @@ const {
 
 //---------------------------- user controller function ----------------------------
 
-const { contactUpdate } = require("../controllers/userController");
+const { contactUpdate, userDelete } = require("../controllers/userController");
 
 //---------------------------- appoinment controller function -----------------------
 
@@ -25,6 +25,7 @@ const {
   appoCheck,
   appoBook,
   appoCancel,
+  appoView,
 } = require("../controllers/appoimentController");
 
 //---------------------------- user auth routes -------------------------
@@ -49,6 +50,8 @@ router.post(
   updatePassword
 );
 
+//router.post("/logout", userLogout);  // should be done
+
 //---------------------------- user routes -------------------------
 
 router.post(
@@ -57,13 +60,39 @@ router.post(
   contactUpdate
 );
 
+router.post(
+  "/userDelete",
+  passport.authenticate("jwt", { session: false }),
+  userDelete
+);
+
 //---------------------------- appoinment route----------------------
 
-router.post("/appocheck", appoCheck);
+router.post(
+  "/appoCheck",
+  passport.authenticate("jwt", { session: false }),
+  appoCheck
+);
 
-router.post("/appobook", appoBook);
+router.post(
+  "/appoBook",
+  passport.authenticate("jwt", { session: false }),
+  appoBook
+);
 
-router.post("/appocancel", appoCancel);
+router.post(
+  "/appoCancel",
+  passport.authenticate("jwt", { session: false }),
+  appoCancel
+);
+
+//----------------------- user appoinment route -----------------------
+
+router.get(
+  "/appoView",
+  passport.authenticate("jwt", { session: false }),
+  appoView
+);
 
 //exporting the user routes
 module.exports = router;

@@ -11,11 +11,7 @@ const { superAdminLogin } = require("../controllers/superAdminAuthController");
 
 const {
   adminRegister,
-  adminConfirmation,
-  verifyResendToken,
-  updatePassword,
-  forgotPassword,
-  postOTP,
+  adminDelete,
 } = require("../controllers/adminAuthController");
 
 //-------------------------- Super Admin Doc controller function --------------------------
@@ -24,39 +20,60 @@ const {
   uploadDoc,
   leaveDoc,
   leaveDocCancel,
+  deleteDoc,
 } = require("../controllers/adminDocController");
 
 //-----------------------------  Super Admin controller function --------------------------
 
 router.post("/superlogin", superAdminLogin);
 
+//router.post("/superLogout", superAdminLogout);  // shoud be done
+
 //------------------------- Admin Dept Admin controller function --------------------------
 
 //admin auth routes
-router.post("/register", adminRegister);
-
-router.get("/userConformation/:token", adminConfirmation);
-
-router.post("/verifyResendToken", verifyResendToken);
-
-router.post("/forgotPassword", forgotPassword);
-
-router.post("/postOTP", postOTP);
-
 router.post(
-  "/updatePassword",
+  "/register",
   passport.authenticate("jwt", { session: false }),
-  updatePassword
+  adminRegister
 );
 
 //super admin doc routes
 
 //upload doctor detail with image
-router.post("/uploadDoc", uploadDoc);
+router.post(
+  "/uploadDoc",
+  passport.authenticate("jwt", { session: false }),
+  uploadDoc
+);
 
-router.post("/leaveDoc", leaveDoc);
+//delete doctor detail with image
+router.post(
+  "/deleteDoc",
+  passport.authenticate("jwt", { session: false }),
+  deleteDoc
+);
 
-router.post("/leaveDocCancel", leaveDocCancel);
+//doctor leave route
+
+router.post(
+  "/leaveDoc",
+  passport.authenticate("jwt", { session: false }),
+  leaveDoc
+);
+
+router.post(
+  "/leaveDocCancel",
+  passport.authenticate("jwt", { session: false }),
+  leaveDocCancel
+);
+
+//delete the admin route
+router.post(
+  "adminDelete",
+  passport.authenticate("jwt", { session: false }),
+  adminDelete
+);
 
 //exporting the admin Routes
 module.exports = router;

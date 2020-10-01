@@ -275,6 +275,33 @@ module.exports = {
         .json({ message: `Error in updatePassword${err.message}` });
     }
   },
-};
 
-//-------------------------------------------------------------------------
+  //------------------------------ Delete admin account ----------------------------------
+
+  adminDelete: async (req, res, next) => {
+    try {
+      const { errors, isValid } = validateForgotPassword(req.body);
+      if (!isValid) {
+        return res.status(400).json(errors);
+      }
+      const { email } = req.body;
+      //checking weather admin is present or not
+      const admin = await Admin.findOne({ email });
+      if (!admin) {
+        errors.email = "Email doesnt not exist";
+        return res.status(400).json(errors);
+      }
+      //deleting the admin account from bd
+      await Admin.deleteOne({ email });
+      //success message
+      return res
+        .status(200)
+        .json({ message: "Admin account deleted successfully" });
+    } catch (err) {
+      console.log("Error in Deleting the Admin account", err.message);
+      return res.status(400).json({
+        message: `Error in Deleting the Admin account ${err.message}`,
+      });
+    }
+  },
+};
