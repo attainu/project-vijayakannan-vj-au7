@@ -127,5 +127,53 @@ module.exports = {
         .json({ message: `Error in cancelling leave ${err.message}` });
     }
   },
+
+  //---------------------------------- Delete Doctor Detail ---------------------------------
+
+  deleteDoc: async (req, res, next) => {
+    try {
+      // const { errors, isValid } = validateForgotPassword(req.body);
+      // if (!isValid) {
+      //   return res.status(400).json(errors);
+      // }
+      const { name, department } = req.body;
+      //checking weather admin is present or not
+      const docData = await Doctor.findOne({ name, department });
+      if (!docData) {
+        errors.email = "Doctor doesnt not exist";
+        return res.status(400).json(errors);
+      }
+      //deleting the doctor account from bd
+      await Doctor.deleteOne({ _id: docData._id });
+      //success message
+      return res
+        .status(200)
+        .json({ message: "Doctor Account deleted successfully" });
+    } catch (err) {
+      console.log("Error in Deleting the doctor account", err.message);
+      return res.status(400).json({
+        message: `Error in Deleting the doctor account ${err.message}`,
+      });
+    }
+  },
+
+  //---------------------------------- View All Doctor Detail ---------------------------------
+
+  viewAllDoc: async (req, res, next) => {
+    try {
+      //checking weather doctor is present or not
+      const docData = await Doctor.find({});
+      if (!docData) {
+        errors.email = "Doctor doesnt not exist";
+        return res.status(400).json(errors);
+      }
+      //success message
+      return res.status(200).json({ message: `Doctor Data ${[docData]}` });
+    } catch (err) {
+      console.log("Error in Displaying the doctor details", err.message);
+      return res.status(400).json({
+        message: `Error in  Displaying the doctor details ${err.message}`,
+      });
+    }
+  },
 };
-//---------------------------------- Delete Doctor Detail ---------------------------------
