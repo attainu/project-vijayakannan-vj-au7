@@ -5,7 +5,7 @@ const cloudinary = require("../utils/cloudinary");
 const Doctor = require("../models/doctor");
 
 //Validation
-const validateImage = require("../validation/imgvalidation");
+const validateImage = require("../validation/imgValidation");
 const validateLeaveInput = require("../validation/leave");
 
 //controller functions

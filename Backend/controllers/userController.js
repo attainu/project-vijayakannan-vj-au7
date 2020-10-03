@@ -1,6 +1,3 @@
-//user account delete
-//user contact update
-
 //Models
 const User = require("../models/user");
 
