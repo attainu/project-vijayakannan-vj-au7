@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 const passport = require("passport");
 const fileupload = require("express-fileupload");
 const cookieParser = require("cookie-parser");
@@ -12,6 +13,10 @@ require("./database/mongodb");
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+//helmet config
+app.use(helmet());
+
 //temp file declaration
 app.use(
   fileupload({

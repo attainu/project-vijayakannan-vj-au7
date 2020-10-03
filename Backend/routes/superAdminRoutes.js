@@ -1,6 +1,9 @@
 const { Router } = require("express");
 const passport = require("passport");
 
+//to protect the route
+const { restrictTo } = require("../middleware/protect");
+
 const router = Router();
 
 //-----------------------Super Admin auth Controller function ---------  ----------------
@@ -33,9 +36,17 @@ router.post("/superlogin", superAdminLogin);
 
 //admin auth routes
 router.post(
-  "/register",
+  "/adminRegister",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("superadmin"),
   adminRegister
+);
+//delete the admin route
+router.post(
+  "/adminDelete",
+  passport.authenticate("jwt", { session: false }),
+  restrictTo("superadmin"),
+  adminDelete
 );
 
 //super admin doc routes
@@ -44,6 +55,7 @@ router.post(
 router.post(
   "/uploadDoc",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("superadmin"),
   uploadDoc
 );
 
@@ -51,6 +63,7 @@ router.post(
 router.post(
   "/deleteDoc",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("superadmin"),
   deleteDoc
 );
 
@@ -59,20 +72,15 @@ router.post(
 router.post(
   "/leaveDoc",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("superadmin"),
   leaveDoc
 );
 
 router.post(
   "/leaveDocCancel",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("superadmin"),
   leaveDocCancel
-);
-
-//delete the admin route
-router.post(
-  "adminDelete",
-  passport.authenticate("jwt", { session: false }),
-  adminDelete
 );
 
 //exporting the admin Routes

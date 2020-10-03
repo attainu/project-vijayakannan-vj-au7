@@ -29,7 +29,7 @@ module.exports = {
         return res.status(400).json(errors);
       }
       //checks weather the admin is already exist
-      const { name, email, password } = req.body;
+      const { name, department, email, password, contact } = req.body;
       const admin = await Admin.findOne({ email });
       if (admin) {
         errors.email = "Email already exist";
@@ -40,7 +40,7 @@ module.exports = {
       //default avatar is set
       const avatar = gravatar.url(email, { s: "200", r: "pg", d: "mm" });
       //token generation
-      const token = jwt.sign({ name, email, password }, keys.secretKey, {
+      const token = jwt.sign({ name, email }, keys.secretKey, {
         expiresIn: 120,
       });
       //sending a verfication mail using nodemailer
@@ -48,7 +48,9 @@ module.exports = {
       //admin data
       const newAdmin = await new Admin({
         name,
+        department,
         email,
+        contact,
         password: hashedPassword,
         avatar,
         // confirmToken: token,

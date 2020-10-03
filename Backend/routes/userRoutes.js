@@ -1,6 +1,10 @@
 const { Router } = require("express");
 const passport = require("passport");
 
+//to protect the route
+const { restrictTo } = require("../middleware/protect");
+
+//route instance
 const router = Router();
 
 //---------------------------- user auth controller function -------------------------
@@ -34,9 +38,9 @@ const {
 
 router.post("/register", userRegister);
 
-router.get("/userConformation/:token", userConfirmation);
+router.get("/userConfirmation/:token", userConfirmation);
 
-router.post("/verifyResendToken", verifyResendToken);
+router.post("/resendToken", verifyResendToken);
 
 router.post("/login", userLogin);
 
@@ -47,6 +51,7 @@ router.post("/postOTP", postOTP);
 router.post(
   "/updatePassword",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("user"),
   updatePassword
 );
 
@@ -57,12 +62,14 @@ router.post(
 router.post(
   "/contactUpdate",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("user"),
   contactUpdate
 );
 
 router.post(
   "/userDelete",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("user"),
   userDelete
 );
 
@@ -71,18 +78,21 @@ router.post(
 router.post(
   "/appoCheck",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("user"),
   appoCheck
 );
 
 router.post(
   "/appoBook",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("user"),
   appoBook
 );
 
 router.post(
   "/appoCancel",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("user"),
   appoCancel
 );
 
@@ -91,6 +101,7 @@ router.post(
 router.get(
   "/appoView",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("user"),
   appoView
 );
 

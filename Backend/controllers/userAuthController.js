@@ -152,7 +152,7 @@ module.exports = {
         return res.status(400).json({ message: "Please verify you mail" });
       }
 
-      const payload = { id: user.id, user: user };
+      const payload = { id: user.id, user: user, role: user.role };
       jwt.sign(payload, keys.secretKey, { expiresIn: 7200 }, (err, token) => {
         res.json({
           success: true,

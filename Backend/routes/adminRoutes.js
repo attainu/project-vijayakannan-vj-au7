@@ -1,6 +1,9 @@
 const { Router } = require("express");
 const passport = require("passport");
 
+//to protect the route
+const { restrictTo } = require("../middleware/protect");
+
 const router = Router();
 
 //-------------------------- Admin Auith Controller function ----------------------
@@ -15,9 +18,9 @@ const {
 } = require("../controllers/adminAuthController");
 
 //admin auth routes
-router.get("/userConformation/:token", adminConfirmation);
+router.get("/adminConfirmation/:token", adminConfirmation);
 
-router.post("/verifyResendToken", verifyResendToken);
+router.post("/resendToken", verifyResendToken);
 
 router.post("/login", adminLogin);
 
@@ -28,6 +31,7 @@ router.post("/postOTP", postOTP);
 router.post(
   "/updatePassword",
   passport.authenticate("jwt", { session: false }),
+  restrictTo("admin"),
   updatePassword
 );
 
