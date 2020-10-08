@@ -1,6 +1,4 @@
 import axios from "axios";
-import setAuthToken from "../helper/setAuthToken";
-import jwt_decode from "jwt-decode";
 
 //update password
 export const adminUpdatePasswordHelper = (data) => {

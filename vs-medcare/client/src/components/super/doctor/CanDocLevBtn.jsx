@@ -15,12 +15,12 @@ const CanDocLevBtn = () => {
   //form
   const [name, setName] = useState("");
   const [department, setDepartment] = useState("");
-  const [dateData, setDateData] = useState("");
+  const [date, setDate] = useState(null);
   //form handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    //console.log(name, department, dateData);
-    dispatch(delDocLeave({ name, department, dateData }));
+    console.log(name, department, date);
+    dispatch(delDocLeave({ name, department, date }));
   };
 
   return (
@@ -46,7 +46,7 @@ const CanDocLevBtn = () => {
               {/* ============================== */}
               <div className="col-7 mt-2 text-center">
                 <Modal.Title className="align-self-center">
-                  Doctor Leave Cancel
+                  Cancel Doctor Leave
                 </Modal.Title>
               </div>
               {/* ============================== */}
@@ -62,7 +62,7 @@ const CanDocLevBtn = () => {
         <Modal.Body className="ModelBody">
           <form onSubmit={formSubmitHandler}>
             <div className="form-group">
-              <label for="InputDocName">Doctor name</label>
+              <label>Doctor name</label>
               <input
                 type="text"
                 className="form-control"
@@ -73,7 +73,7 @@ const CanDocLevBtn = () => {
               />
             </div>
             <div className="form-group">
-              <label for="InputDepartment">Department</label>
+              <label>Department</label>
               <input
                 type="text"
                 className="form-control"
@@ -84,23 +84,21 @@ const CanDocLevBtn = () => {
               />
             </div>
             <div className="form-group">
-              <label for="InputDate">Date</label>
+              <label>Date</label>
               <input
                 type="date"
                 className="form-control"
                 id="InputDate"
                 placeholder="Enter date"
                 required
-                onChange={(e) => setDateData(e.target.value)}
+                onChange={(e) => setDate(e.target.value)}
               />
             </div>
+            <button type="submit" className="model-main-btn">
+              Cancel Leave
+            </button>
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <button type="submit" className="model-main-btn">
-            Cancel Leave
-          </button>
-        </Modal.Footer>
       </Modal>
     </>
   );

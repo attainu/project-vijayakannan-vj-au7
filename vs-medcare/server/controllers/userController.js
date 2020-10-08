@@ -20,11 +20,10 @@ module.exports = {
         return res.status(400).json(errors);
       }
     
+      const { _id } = req.user;
       const { contact } = req.body;
+      await User.findOneAndUpdate({ _id }, { contact });
 
-      await User.findOneAndUpdate(req.user.email, {
-        contact: contact,
-      });
       return res
         .status(200)
         .json({ message: "Contact number updated successfully" });

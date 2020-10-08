@@ -4,6 +4,7 @@ import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../images/head-logo-1.png";
 import { userRegister } from "../../redux/actions/userAction";
+import LoginBtn from "./LoginBtn";
 
 //
 const SignupBtn = () => {
@@ -105,20 +106,20 @@ const SignupBtn = () => {
                 />
               </div>
             </div>
-            <a
-              to="#userLogin"
-              data-toggle="modal"
-              data-target="#userLogin"
-              data-dismiss="modal"
-            >
-              Already have account?
-            </a>
-            <button type="submit" className="model-main-btn">
-              Sign Up
-            </button>
+            <div className="container">
+              <div className="row">
+                <div className="col">
+                  <LoginBtn />
+                </div>
+                <div className="col">
+                  <button type="submit" className="model-main-btn">
+                    Sign Up
+                  </button>
+                </div>
+              </div>
+            </div>
           </form>
         </Modal.Body>
-        {/* <Modal.Footer></Modal.Footer> */}
       </Modal>
     </>
   );

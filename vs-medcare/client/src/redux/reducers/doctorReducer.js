@@ -29,6 +29,12 @@ const doctorReducer = (state = initialState, action) => {
         doctor: action.payload,
         isAuthenticated: true,
       };
+    case "SET_VIEWDOC_DATA":
+      return {
+        ...state,
+        doctor: action.payload,
+        isAuthenticated: true,
+      };
     default:
       return state;
   }

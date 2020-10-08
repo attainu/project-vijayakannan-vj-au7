@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Copy from "./Copy";
 import FooterIcon from "./FooterIcon";
 import Term from "./Term";

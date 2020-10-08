@@ -5,29 +5,28 @@ import { Link } from "react-router-dom";
 const TeamCard = () => {
   return (
     <>
-      <div class="col-lg-6 mt-4">
-        <div class="member">
-          <div class="image">
-            <img src={Face} class="img-fluid" alt="" />
+      <div className="col-lg-6 mt-4">
+        <div className="member">
+          <div className="image">
+            <img src={Face} className="img-fluid" alt="" />
           </div>
-          <div class="member-info">
+          <div className="member-info">
             <h4>John Doe</h4>
             <span>MS</span>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <div class="social">
-              <a href="">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="">
-                <i class="fab fa-facebook"></i>
-              </a>
-              <a href="">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="">
-                {" "}
-                <i class="fab fa-linkedin"></i>{" "}
-              </a>
+            <div className="social">
+              <Link to="#">
+                <i className="fab fa-twitter"></i>
+              </Link>
+              <Link to="#">
+                <i className="fab fa-facebook"></i>
+              </Link>
+              <Link to="#">
+                <i className="fab fa-instagram"></i>
+              </Link>
+              <Link to="#">
+                <i className="fab fa-linkedin"></i>
+              </Link>
             </div>
           </div>
         </div>

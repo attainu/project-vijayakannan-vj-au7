@@ -61,7 +61,7 @@ const DelDocBtn = () => {
         <Modal.Body className="ModelBody">
           <form onSubmit={formSubmitHandler}>
             <div className="form-group">
-              <label for="InputEmail1">Email address</label>
+              <label>Email address</label>
               <input
                 type="email"
                 className="form-control"

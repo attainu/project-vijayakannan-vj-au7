@@ -43,7 +43,7 @@ router.post(
 
 //-------------------------- Appoinment Controller function ----------------------
 
-router.post(
+router.get(
   "/appoAdminView", 
   passport.authenticate("jwt", { session: false }),
   restrictTo("admin"),

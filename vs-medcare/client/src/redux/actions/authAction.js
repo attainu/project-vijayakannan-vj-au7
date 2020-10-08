@@ -9,8 +9,7 @@ export const superAdminLoignHelper = (data) => {
     payload: data,
   };
 };
-
-//admin
+//user
 export const adminLoginHelper = (data) => {
   return {
     type: "SET_ADMIN_DATA",
@@ -21,13 +20,21 @@ export const adminLoginHelper = (data) => {
 //user
 export const userLoginHelper = (data) => {
   return {
-    type: "SET_USERS_DATA",
+    type: "SET_USER_DATA",
+    payload: data,
+  };
+};
+
+//user logout
+const userLogoutHelper = (data) => {
+  return {
+    type: "DELETE_USER_DATA",
     payload: data,
   };
 };
 
 // login function superadmin | admin | user
-export const loginFunction = (userLoginCredentials) => {
+export const loginFunction = (userLoginCredentials, History) => {
   if (userLoginCredentials.role === "superadmin") {
     return async (dispatch) => {
       try {
@@ -39,11 +46,12 @@ export const loginFunction = (userLoginCredentials) => {
 
         const { token } = data;
         localStorage.setItem("userJwtToken", token);
+        localStorage.setItem("isLogged", true);
 
         setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(superAdminLoignHelper(decoded.user));
-        //history.push("/allposts");
+        History.push("/superadmin");
       } catch (err) {
         dispatch({
           type: "SET_LOGIN_ERRORS",
@@ -63,11 +71,12 @@ export const loginFunction = (userLoginCredentials) => {
 
         const { token } = data;
         localStorage.setItem("userJwtToken", token);
+        localStorage.setItem("isLogged", true);
 
         setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(adminLoginHelper(decoded.user));
-        //history.push("/allposts");
+        History.push("/admin");
       } catch (err) {
         dispatch({
           type: "SET_LOGIN_ERRORS",
@@ -87,11 +96,12 @@ export const loginFunction = (userLoginCredentials) => {
 
         const { token } = data;
         localStorage.setItem("userJwtToken", token);
+        localStorage.setItem("isLogged", true);
 
         setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(userLoginHelper(decoded.user));
-        //history.push("/allposts");
+        History.push("/user");
       } catch (err) {
         dispatch({
           type: "SET_LOGIN_ERRORS",
@@ -101,4 +111,12 @@ export const loginFunction = (userLoginCredentials) => {
       }
     };
   }
+};
+
+export const userLogout = () => {
+  return (dispatch) => {
+    localStorage.removeItem("userJwtToken");
+    localStorage.removeItem("isLogged");
+    setAuthToken(false);
+  };
 };

@@ -14,17 +14,17 @@ const PostOtpBtn = () => {
   //form
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
-  const [newpassword, setNewPassword] = useState("");
-  const [confirmnewpassword, setConfirmNewPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
   //from handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(adminPostOtp({ email, otp, newpassword, confirmnewpassword }));
+    dispatch(adminPostOtp({ email, otp, newPassword, confirmNewPassword }));
   };
 
   return (
     <>
-      <Link onClick={handlePostOtpShow} class="main-btn">
+      <Link onClick={handlePostOtpShow} className="main-btn">
         Post OTP
       </Link>
 
@@ -32,12 +32,12 @@ const PostOtpBtn = () => {
 
       <Modal show={showPostOtp} onHide={handlePostOtpShow}>
         <Modal.Header>
-          <div class="container">
-            <div class="row">
+          <div className="container">
+            <div className="row">
               {/* ============================== */}
-              <div class="col-3">
+              <div className="col-3">
                 <img
-                  class="image-fulid justify-content-start align-items-center"
+                  className="image-fulid justify-content-start align-items-center"
                   style={{ width: "100px" }}
                   src={logo}
                   alt="vs-med-care-logo"
@@ -50,7 +50,7 @@ const PostOtpBtn = () => {
                 </Modal.Title>
               </div>
               {/* ============================== */}
-              <div class="col-1">
+              <div className="col-1">
                 <Modal.Header
                   closeButton
                   onClick={handlePostOtpClose}
@@ -61,47 +61,47 @@ const PostOtpBtn = () => {
         </Modal.Header>
         <Modal.Body className="ModelBody">
           <form onSubmit={formSubmitHandler}>
-            <div class="form-group">
+            <div className="form-group">
               <label for="InputEmail1">Email address</label>
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter email"
                 required
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputOtp">OTP</label>
+            <div className="form-group">
+              <label>OTP</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter six digit OTP"
                 required
                 onChange={(e) => setOtp(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputNewPassword">New Password</label>
+            <div className="form-group">
+              <label>New Password</label>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter new password"
                 required
                 onChange={(e) => setNewPassword(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputNewPassword">Conform Password</label>
+            <div className="form-group">
+              <label>Conform Password</label>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 placeholder="Conform password"
                 required
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </div>
-            <button type="submit" class="model-main-btn">
+            <button type="submit" className="model-main-btn">
               Submit
             </button>
           </form>

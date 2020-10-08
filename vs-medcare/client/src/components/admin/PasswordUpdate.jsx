@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../images/head-logo-1.png";
+import { adminUpdatePassword } from "../../redux/actions/adminAction";
 
 const PasswordUpdateBtn = () => {
   const dispatch = useDispatch();
@@ -12,18 +13,18 @@ const PasswordUpdateBtn = () => {
   const handlePasswordUpdateClose = () => setShowPasswordUpdate(false);
   //form
   const [email, setEmail] = useState("");
-  const [oldpassword, setOldPassword] = useState("");
-  const [newpassword, setNewPassword] = useState("");
-  const [confirmnewpassword, setConfirmNewPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
   //from handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(
       adminUpdatePassword({
         email,
-        oldpassword,
-        newpassword,
-        confirmnewpassword,
+        oldPassword,
+        newPassword,
+        confirmNewPassword,
       })
     );
   };
@@ -31,7 +32,7 @@ const PasswordUpdateBtn = () => {
   return (
     <>
       <Link onClick={handlePasswordUpdateShow} className="main-btn">
-        Update Password
+        Password update
       </Link>
 
       {/* ==============password-update--model================ */}
@@ -78,7 +79,7 @@ const PasswordUpdateBtn = () => {
               />
             </div>
             <div className="form-group">
-              <label for="InputPassword">Old Password</label>
+              <label>Old Password</label>
               <input
                 type="text"
                 className="form-control"

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import $ from "jquery";
 import logo from "../../../images/head-logo-1.png";
+import "react-datepicker/dist/react-datepicker.css";
 import { addDocLeave } from "../../../redux/actions/doctorAction";
 
-const AddDocLevBtn = () => {
+const AddDocLevBtn = (props) => {
+  //console.log(props.doctorData);
   const dispatch = useDispatch();
   //model
   const [showAddDocLev, setShowAddDocLev] = useState(false);
@@ -15,17 +16,13 @@ const AddDocLevBtn = () => {
   //form
   const [name, setName] = useState("");
   const [department, setDepartment] = useState("");
-  const [dateData, setDateData] = useState("");
+  //datepicker
+  const [date, setDate] = useState(null);
   //form handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    let currentDate = new Date().toLocaleDateString();
-    console.log(currentDate);
-    // if (dateData > currentDate) {
-
-    // }
-    console.log(name, department, dateData);
-    dispatch(addDocLeave({ name, department, dateData }));
+    console.log(name, department, date);
+    dispatch(addDocLeave({ name, department, date }));
   };
 
   return (
@@ -52,7 +49,7 @@ const AddDocLevBtn = () => {
               {/* ============================== */}
               <div className="col-7 mt-2 text-center">
                 <Modal.Title className="align-self-center">
-                  Doctor Leave Cancel
+                  Doctor Leave Marking
                 </Modal.Title>
               </div>
               {/* ============================== */}
@@ -68,34 +65,35 @@ const AddDocLevBtn = () => {
         <Modal.Body className="ModelBody">
           <form onSubmit={formSubmitHandler}>
             <div className="form-group">
-              <label for="InputDocName">Doctor name</label>
-              <input
-                type="text"
+              <label>Doctor</label>
+              <select
                 className="form-control"
-                placeholder="Enter Doctor name"
-                required
                 onChange={(e) => setName(e.target.value)}
-              />
+              >
+                {props.doctorData.map((doc) => (
+                  <option value={doc.name}>{doc.name}</option>
+                ))}
+              </select>
             </div>
-
             <div className="form-group">
-              <label for="InputDepartment">Department</label>
-              <input
-                type="text"
+              <label>Department</label>
+              <select
                 className="form-control"
-                placeholder="Enter Department"
-                required
                 onChange={(e) => setDepartment(e.target.value)}
-              />
+              >
+                {props.doctorData.map((doc) => (
+                  <option value={doc.department}>{doc.department}</option>
+                ))}
+              </select>
             </div>
             <div className="form-group">
-              <label for="InputDate">Date</label>
+              <label>Date</label>
               <input
                 type="date"
                 className="form-control"
                 placeholder="Enter date"
                 required
-                onChange={(e) => setDateData(e.target.value)}
+                onChange={(e) => setDate(e.target.value)}
               />
             </div>
             <button type="submit" className="model-main-btn">

@@ -19,22 +19,22 @@ const ContForm = () => {
   return (
     <>
       <form onSubmit={formSubmitHandler}>
-        <div class="form-group">
-          <div class="col-md-12 form-group">
+        <div className="form-group">
+          <div className="col-md-12 form-group">
             <input
               type="text"
               name="name"
-              class="form-control"
+              className="form-control"
               id="name"
               placeholder="Your Name"
               required
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div class="col-md-12 form-group">
+          <div className="col-md-12 form-group">
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               name="email"
               id="email"
               placeholder="Your Email"
@@ -42,9 +42,9 @@ const ContForm = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div class="col-md-12 form-group">
+          <div className="col-md-12 form-group">
             <textarea
-              class="form-control"
+              className="form-control"
               name="message"
               rows="5"
               required
@@ -52,7 +52,7 @@ const ContForm = () => {
             ></textarea>
           </div>
         </div>
-        <div class="text-center">
+        <div className="text-center">
           <button type="submit">Send Message</button>
         </div>
       </form>

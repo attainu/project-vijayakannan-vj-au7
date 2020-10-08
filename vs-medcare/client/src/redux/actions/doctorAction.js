@@ -1,6 +1,4 @@
 import axios from "axios";
-import setAuthToken from "../helper/setAuthToken";
-import jwt_decode from "jwt-decode";
 
 // adding doctor
 export const addDocDataHelper = (data) => {
@@ -34,6 +32,14 @@ export const delDocLeaveHelper = (data) => {
   };
 };
 
+//view doctor data
+export const viewDocDataHelper = (data) => {
+  return {
+    type: "SET_VIEWDOC_DATA",
+    payload: data,
+  };
+};
+
 // adding doctor data by super admin
 export const addDocData = (addDocDataCredentials) => {
   return async (dispatch) => {
@@ -49,7 +55,7 @@ export const addDocData = (addDocDataCredentials) => {
         },
       });
 
-      // dispatch(registerLoaderFlagHelper(true));
+      dispatch(addDocDataHelper(data));
       // history.push("/");
     } catch (err) {
       dispatch({
@@ -89,13 +95,13 @@ export const delDocData = (delDocDataCredentials) => {
 };
 
 // Marking the doctor leave by super admin
-export const addDocLeave = (delDocDataCredentials) => {
+export const addDocLeave = (addDocDataCredentials) => {
   return async (dispatch) => {
     try {
       const { data } = await axios({
         method: "Post",
         url: "https://vs-medcare.herokuapp.com/api/superadmin/leaveDoc",
-        data: delDocDataCredentials,
+        data: addDocDataCredentials,
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -110,7 +116,7 @@ export const addDocLeave = (delDocDataCredentials) => {
         type: "SET_ADDDOCLEAVE_ERRORS",
         payload: err.response.data,
       });
-      console.log("Error in delete doctor leave Action", err.message);
+      console.log("Error in add doctor leave Action", err.message);
     }
   };
 };
@@ -138,6 +144,27 @@ export const delDocLeave = (delDocLeaveCredentials) => {
         payload: err.response.data,
       });
       console.log("Error in delete doctor leave Action", err.message);
+    }
+  };
+};
+
+// Cancelling the doctor leave by super admin
+export const viewDocData = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios({
+        method: "Get",
+        url: "http://localhost:5000/api/public/viewAllDoc",
+      });
+
+      dispatch(viewDocDataHelper(data.message));
+      // history.push("/");
+    } catch (err) {
+      dispatch({
+        type: "SET_VIEWDOCDATA_ERRORS",
+        payload: err.response.data,
+      });
+      console.log("Error in view doctor data Action", err.message);
     }
   };
 };

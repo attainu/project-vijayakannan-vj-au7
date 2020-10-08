@@ -25,7 +25,7 @@ const AddAdminBtn = () => {
 
   return (
     <>
-      <Link onClick={handleAddAdminShow} class="main-btn">
+      <Link onClick={handleAddAdminShow} className="main-btn">
         Add Admin
       </Link>
 
@@ -33,12 +33,12 @@ const AddAdminBtn = () => {
 
       <Modal show={showAddAdmin} onHide={handleAddAdminShow}>
         <Modal.Header>
-          <div class="container">
-            <div class="row">
+          <div className="container">
+            <div className="row">
               {/* ============================== */}
-              <div class="col-3">
+              <div className="col-3">
                 <img
-                  class="image-fulid justify-content-start align-items-center"
+                  className="image-fulid justify-content-start align-items-center"
                   style={{ width: "100px" }}
                   src={logo}
                   alt="vs-med-care-logo"
@@ -51,7 +51,7 @@ const AddAdminBtn = () => {
                 </Modal.Title>
               </div>
               {/* ============================== */}
-              <div class="col-1">
+              <div className="col-1">
                 <Modal.Header
                   closeButton
                   onClick={handleAddAdminClose}
@@ -62,58 +62,58 @@ const AddAdminBtn = () => {
         </Modal.Header>
         <Modal.Body className="ModelBody">
           <form onSubmit={formSubmitHandler}>
-            <div class="form-group">
-              <label for="InputName">Name</label>
+            <div className="form-group">
+              <label>Name</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter fullname"
                 required
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputDepartment">Department</label>
+            <div className="form-group">
+              <label>Department</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter Department"
                 required
                 onChange={(e) => setDepartment(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputEmail1">Email address</label>
+            <div className="form-group">
+              <label>Email address</label>
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter email"
                 required
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputContact">Contact</label>
+            <div className="form-group">
+              <label>Contact</label>
               <input
                 type="tel"
                 pattern="[0-9]{10}"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter contact number"
                 required
                 onChange={(e) => setContact(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputPassword">Password</label>
+            <div className="form-group">
+              <label>Password</label>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter Password"
                 required
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button type="submit" class="model-main-btn">
+            <button type="submit" className="model-main-btn">
               Add Department Admin
             </button>
           </form>

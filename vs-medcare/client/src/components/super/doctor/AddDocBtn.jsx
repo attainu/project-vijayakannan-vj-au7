@@ -39,7 +39,7 @@ const AddDocBtn = () => {
 
   return (
     <>
-      <Link onClick={handleAddDocShow} class="main-btn">
+      <Link onClick={handleAddDocShow} className="main-btn">
         Add Doctor
       </Link>
 
@@ -47,12 +47,12 @@ const AddDocBtn = () => {
 
       <Modal show={showAddDoc} onHide={handleAddDocShow}>
         <Modal.Header>
-          <div class="container">
-            <div class="row">
+          <div className="container">
+            <div className="row">
               {/* ============================== */}
-              <div class="col-3">
+              <div className="col-3">
                 <img
-                  class="image-fulid justify-content-start align-items-center"
+                  className="image-fulid justify-content-start align-items-center"
                   style={{ width: "100px" }}
                   src={logo}
                   alt="vs-med-care-logo"
@@ -65,7 +65,7 @@ const AddDocBtn = () => {
                 </Modal.Title>
               </div>
               {/* ============================== */}
-              <div class="col-1">
+              <div className="col-1">
                 <Modal.Header
                   closeButton
                   onClick={handleAddDocClose}
@@ -76,59 +76,59 @@ const AddDocBtn = () => {
         </Modal.Header>
         <Modal.Body className="ModelBody">
           <form onSubmit={formSubmitHandler}>
-            <div class="form-group">
-              <label for="InputName">Name</label>
+            <div className="form-group">
+              <label>Name</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter Name"
                 required
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputEmail1">Email address</label>
+            <div className="form-group">
+              <label>Email address</label>
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter email"
                 required
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputDepartment">Department</label>
+            <div className="form-group">
+              <label>Department</label>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter department"
                 required
                 onChange={(e) => setDepartment(e.target.value)}
               />
             </div>
-            <div class="form-group">
-              <label for="InputDesc">Description</label>
+            <div className="form-group">
+              <label>Description</label>
               <textarea
                 type="text"
                 rows="3"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter description"
                 required
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
             </div>
-            <div class="form-group">
-              <label for="InputDocImage">Doctor Image</label>
+            <div className="form-group">
+              <label>Doctor Image</label>
               <input
                 type="file"
-                class="form-control-file"
+                className="form-control-file"
                 placeholder="Upload Image"
-                // accept=".gif,.jpg,.jpeg,.png"
+                accept=".gif,.jpg,.jpeg,.png"
                 required
                 onChange={imageHandler}
               />
             </div>
-            <button type="submit" class="model-main-btn">
+            <button type="submit" className="model-main-btn">
               Add Doctor
             </button>
           </form>

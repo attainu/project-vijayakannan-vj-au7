@@ -1,9 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { HashLink } from "react-router-hash-link";
+import { Link, useHistory } from "react-router-dom";
 import headlogo from "../../images/head-logo-1.png";
+import { userLogout } from "../../redux/actions/authAction";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  //handler
+  const logoutHandler = () => {
+    dispatch(userLogout());
+    history.push("/");
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg nav-back fixed-top" id="mainNav">
@@ -26,35 +35,49 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <HashLink smooth className="nav-link" to="#home">
+                <HashLink smooth className="nav-link" to="/#home">
                   Home
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink smooth className="nav-link" to="#about">
+                <HashLink smooth className="nav-link" to="/#about">
                   About
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink smooth className="nav-link" to="#doctor">
+                <Link smooth className="nav-link" to="/doctor">
                   Doctor's
-                </HashLink>
+                </Link>
               </li>
               <li className="nav-item">
-                <HashLink smooth className="nav-link" to="#medcamp">
+                <HashLink smooth className="nav-link" to="/#medcamp">
                   Medical Camps
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink smooth className="nav-link" to="#team">
+                <HashLink smooth className="nav-link" to="/#team">
                   Team
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink smooth className="nav-link" to="#contact">
+                <HashLink smooth className="nav-link" to="/#contact">
                   Contact
                 </HashLink>
               </li>
+              {props.isLoged ? (
+                <>
+                  <li className="nav-item">
+                    <Link
+                      onClick={logoutHandler}
+                      smooth
+                      className="nav-link"
+                      to="#"
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </>
+              ) : null}
             </ul>
           </div>
         </div>

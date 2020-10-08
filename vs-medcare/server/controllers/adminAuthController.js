@@ -41,7 +41,7 @@ module.exports = {
       const avatar = gravatar.url(email, { s: "200", r: "pg", d: "mm" });
       //token generation
       const token = jwt.sign({ name, email }, keys.secretKey, {
-        expiresIn: 120,
+        expiresIn: 600,
       });
       //sending a verfication mail using nodemailer
       await sendMailRG(req.body.email, token, "REGISTER");
@@ -112,7 +112,7 @@ module.exports = {
       }
       //token generation
       const token = jwt.sign({ email }, keys.secretKey, {
-        expiresIn: 120,
+        expiresIn: 600,
       });
       //sending a verfication mail using nodemailer
       await sendMailRG(req.body.email, token, "REGISTER");

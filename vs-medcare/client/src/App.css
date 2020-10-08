@@ -81,7 +81,8 @@ body {
 
 #hero-pg {
   width: 100%;
-  height: 86.75vh;
+  height: auto;
+  margin-top: 9%;
   background: url("../src/images/hero.jpeg") center center;
   background-size: cover;
   position: relative;
@@ -592,4 +593,15 @@ Model Design and Button
 
 .close {
   outline: none !important;
+}
+
+/*-----------------------------
+home text title dashboard
+-----------------------------*/
+
+.dash-title {
+  color: rgb(178, 178, 184) !important;
+  background-color: aliceblue;
+  display: inline-block;
+  text-align: center;
 }

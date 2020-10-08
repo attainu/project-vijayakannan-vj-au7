@@ -5,17 +5,19 @@ const Appo = require("../models/appoinment");
 //validation
 const validateAppoBooking = require("../validation/appovalidation");
 // nodemailer
-const sendMailAP = require('../utils/appoNodmailer');
+const sendMailAP = require("../utils/appoNodmailer");
 
 module.exports = {
   appoCheck: async (req, res, next) => {
     try {
       const { department, name, appoDate, appoTimeSloat } = req.body;
+      console.log(req.body);
       //find the doctor by using name and department thn update leave
       const docData = await Doctor.findOne({ department, name });
       if (!docData) {
         return res.status(400).json({ message: "No such doctor found" });
       }
+      console.log(docData);
       // checking weather doctor is on leave or not
       docData.leave.map((date) => {
         if (date == appoDate) {
@@ -29,8 +31,8 @@ module.exports = {
         doctorID: docData._id,
         appoDate: appoDate,
       });
-
-      if (!appoFind) {
+      console.log(appoFind);
+      if (appoFind.length == 0) {
         return res
           .status(200)
           .json({ message: "Carry on ur Appoinment Booking" });
@@ -99,8 +101,8 @@ module.exports = {
         return appoId;
       }
       const AppoId = await generateAppoId();
-      
-     const appoData =  await Appo.create({
+
+      const appoData = await Appo.create({
         appoId: AppoId,
         appoDate: appoDate,
         appoTimeSloat: appoTimeSloat,
@@ -115,9 +117,8 @@ module.exports = {
         },
         userID: userID,
       });
-  // sending mail to user
-  await sendMailAP(req.user.email, appoData,docData, "APPOINTMENT");
-
+      // sending mail to user
+      await sendMailAP(req.user.email, appoData, docData, "APPOINTMENT");
 
       return res
         .status(200)
@@ -159,7 +160,7 @@ module.exports = {
 
   appoView: async (req, res, next) => {
     try {
-      const { _id } = req.body;
+      const { _id } = req.user;
       //finding the appo detail using the appoinment id.
       const appoData = await Appo.find({ userID: _id });
 
@@ -182,29 +183,29 @@ module.exports = {
 
   appoAdminView: async (req, res, next) => {
     try {
-      const  { department } = req.user;
+      const { department } = req.user;
       const { name } = req.body;
 
       // fething doctor detail using name and department(admin)
       const docData = await Doctor.find({ name, department });
       // cheking wheather doc data is empty or not
-      if(!docData){
+      if (!docData) {
         return res.status(400).json({ message: "Doctor Acess Denied" });
       }
       // getting doctor id
       const docID = docData[0]._id;
-      
-    //finding the appo detail using the doctor id.
-      const appoData = await Appo.find({ 
-      doctorID : docID
+
+      //finding the appo detail using the doctor id.
+      const appoData = await Appo.find({
+        doctorID: docID,
       });
-    
+
       if (!appoData) {
         return res.status(400).json({ message: "No Appoinment record found" });
       }
       // success message
       return res.status(200).json({
-        message:  [appoData],
+        message: [appoData],
       });
     } catch (err) {
       console.log("Error in Viewing appoinment", err.message);

@@ -1,6 +1,4 @@
 import axios from "axios";
-import setAuthToken from "../helper/setAuthToken";
-import jwt_decode from "jwt-decode";
 
 //forgot password
 export const userForgotPasswordHelper = (data) => {
@@ -141,6 +139,7 @@ export const userUpdateContact = (userUpdateContactCredentials, history) => {
           Authorization: "Bearer " + localStorage.getItem("userJwtToken"),
         },
       });
+      await alert(data.message);
       // dispatch(registerLoaderFlagHelper(true));
       // history.push("/");
     } catch (err) {

@@ -77,6 +77,7 @@ module.exports = {
         return res.status(400).json(errors);
       }
       const { name, department, date } = req.body;
+      // date = JSON.stringify(date);
       //find the doctor by using name and department thn update leave
       const docData = await Doctor.findOne({ name, department });
       // checking weather already marked leave or not
@@ -138,12 +139,11 @@ module.exports = {
 
   deleteDoc: async (req, res, next) => {
     try {
-
       const { errors, isValid } = validateForgotPassword(req.body);
       if (!isValid) {
         return res.status(400).json(errors);
       }
-      
+
       const { email } = req.body;
       //checking weather admin is present or not
       const docData = await Doctor.findOne({ email });
@@ -176,7 +176,7 @@ module.exports = {
         return res.status(400).json(errors);
       }
       //success message
-      return res.status(200).json({ message: `Doctor Data ${[docData]}` });
+      return res.status(200).json({ message: docData });
     } catch (err) {
       console.log("Error in Displaying the doctor details", err.message);
       return res.status(400).json({
@@ -184,5 +184,4 @@ module.exports = {
       });
     }
   },
-
-}
+};

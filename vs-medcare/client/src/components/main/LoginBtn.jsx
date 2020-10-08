@@ -1,13 +1,22 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import logo from "../../images/head-logo-1.png";
 import { loginFunction } from "../../redux/actions/authAction";
+import ForgotPasswordBtn from "../user/user/ForgotPassword";
+import TokenResend from "../user/user/TokenResend";
+import SignupBtn from "../main/SignupBtn";
+import PostOtp from "../user/user/PostOtp";
 
 //
 const LoginBtn = () => {
+  const store = useSelector((store) => store.authRoot);
+
   const dispatch = useDispatch();
+  const History = useHistory();
+
   //model
   const [showSignIn, setShowSignIn] = useState(false);
   const handleSignInShow = () => setShowSignIn(true);
@@ -20,7 +29,14 @@ const LoginBtn = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log(role, email, password);
-    dispatch(loginFunction({ email, password, role }));
+    dispatch(loginFunction({ email, password, role }, History));
+
+    setTimeout(() => {
+      const log = localStorage.getItem("isLogged");
+      if (log == null) {
+        toast.info("Invalid Login !");
+      }
+    }, 10000);
   };
 
   return (
@@ -101,7 +117,7 @@ const LoginBtn = () => {
               />
             </div>
             <div className="form-group">
-              <label for="InputPassword">Password</label>
+              <label>Password</label>
               <input
                 type="password"
                 className="form-control"
@@ -110,20 +126,31 @@ const LoginBtn = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <a
-              href="#userLogin"
-              data-toggle="modal"
-              data-target="#userLogin"
-              data-dismiss="modal"
-            >
-              Forgot Password?
-            </a>
-            <button type="submit" className="model-main-btn">
-              Login
-            </button>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-xs-2">
+                  <SignupBtn />
+                </div>
+                <div className="col-xs-2">
+                  <button type="submit" className="model-main-btn">
+                    Login
+                  </button>
+                </div>
+                <div className="col-xs-2">
+                  <PostOtp />
+                </div>
+                <div className="col-xs-2">
+                  <TokenResend />
+                </div>
+                <div className="col-xs-2">
+                  <ForgotPasswordBtn />
+                </div>
+              </div>
+            </div>
           </form>
         </Modal.Body>
       </Modal>
+      <ToastContainer />
     </>
   );
 };

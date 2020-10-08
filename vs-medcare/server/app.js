@@ -22,11 +22,11 @@ app.use(helmet());
 
 // Limit Request From Same API
 const limiter = rateLimit({
-  max:100,
-  windowMs:60 * 60 * 1000,
-  message : "Too many request from this IP, Please try again in an hour"
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many request from this IP, Please try again in an hour",
 });
-app.use('/api',limiter);
+app.use("/api", limiter);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -68,6 +68,7 @@ const publicRoutes = require("./routes/publicRouter");
 const userRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const superAdminRoutes = require("./routes/superAdminRoutes");
+const homeRoutes = require("./routes/homeRoutes");
 
 //Passport Middleware
 app.use(passport.initialize());
@@ -83,6 +84,7 @@ app.use("/api/public", publicRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/superadmin", superAdminRoutes);
+app.use("/api/home", homeRoutes);
 
 //Catching 404 Error
 app.use((req, res, next) => {

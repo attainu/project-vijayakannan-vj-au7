@@ -21,7 +21,7 @@ const ForgotPasswordBtn = () => {
 
   return (
     <>
-      <Link onClick={handleForgotPasswordShow} class="main-btn">
+      <Link onClick={handleForgotPasswordShow} className="main-btn">
         Forgot Password
       </Link>
 
@@ -29,12 +29,12 @@ const ForgotPasswordBtn = () => {
 
       <Modal show={showForgotPassword} onHide={handleForgotPasswordShow}>
         <Modal.Header>
-          <div class="container">
-            <div class="row">
+          <div className="container">
+            <div className="row">
               {/* ============================== */}
-              <div class="col-3">
+              <div className="col-3">
                 <img
-                  class="image-fulid justify-content-start align-items-center"
+                  className="image-fulid justify-content-start align-items-center"
                   style={{ width: "100px" }}
                   src={logo}
                   alt="vs-med-care-logo"
@@ -43,11 +43,11 @@ const ForgotPasswordBtn = () => {
               {/* ============================== */}
               <div className="col-7 mt-2 text-center">
                 <Modal.Title className="align-self-center">
-                  Password Update
+                  Forgot Password
                 </Modal.Title>
               </div>
               {/* ============================== */}
-              <div class="col-1">
+              <div className="col-1">
                 <Modal.Header
                   closeButton
                   onClick={handleForgotPasswordClose}
@@ -58,17 +58,17 @@ const ForgotPasswordBtn = () => {
         </Modal.Header>
         <Modal.Body className="ModelBody">
           <form onSubmit={formSubmitHandler}>
-            <div class="form-group">
-              <label for="InputEmail1">Email address</label>
+            <div className="form-group">
+              <label>Email address</label>
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 placeholder="Enter email"
                 required
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <button type="submit" class="model-main-btn">
+            <button type="submit" className="model-main-btn">
               Submit
             </button>
           </form>
