@@ -88,7 +88,7 @@ $ npm i
 Open `project-vijayakannan-vj-au7` then create and **config.env** file in the root and edit it with your credentials. You will need:
 
 - GMAIL_USERNAME=`Your Desired Port`
-- GMAIL_PASSWORD=
+- GMAIL_PASSWORD=`YOU Dsired Password`
 - MONGO_URL=`Your Database Address`
 - SECRET=` YOUR SECRET KEY`
 - CLOUDINARY_NAME = `YOUR CLOUDINARY NAME`
