@@ -1,0 +1,607 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+/*--------------------------------------------------------------
+# Logo Section
+--------------------------------------------------------------*/
+.nav-logo {
+  width: 100px;
+  height: 50px;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+.nav-back {
+  background: #a6e3e9b9;
+  color: #fff;
+}
+.navbar-brand {
+  color: #000;
+}
+.navbar-brand:hover {
+  color: #fff;
+}
+.nav-link {
+  color: #000;
+}
+.nav-link:hover {
+  color: #fff;
+}
+.navbar-toggler {
+  outline: none !important;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+  width: 100%;
+  height: 80vh;
+  background: url("../src/images/hero.jpeg") center center;
+  background-size: cover;
+  position: relative;
+}
+
+#hero .container {
+  padding-top: 80px;
+}
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}
+
+#hero h2 {
+  color: #eee;
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/*-------------------------------------------------------------------------
+# Hero-pg Section
+---------------------------------------------------------------------------*/
+
+#hero-pg {
+  width: 100%;
+  height: auto;
+  margin-top: 9%;
+  background: url("../src/images/hero.jpeg") center center;
+  background-size: cover;
+  position: relative;
+}
+
+#hero-pg .container {
+  padding-top: 80px;
+}
+
+#hero-pg:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero-pg h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}
+
+#hero-pg h2 {
+  color: #eee;
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.main-btn {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.main-btn:hover {
+  background: #a6e3e9b9;
+  border: 2px solid #a6e3e9b9;
+  text-decoration: none;
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Services
+--------------------------------------------------------------*/
+.service {
+  text-align: center;
+  padding: 70px 20px 80px 20px;
+  transition: all ease-in-out 0.3s;
+  background: #a6e3e9b9;
+  box-shadow: 0px 5px 90px 0px rgba(3, 117, 111, 0.63);
+}
+
+.service .icon {
+  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 0.3s;
+  position: relative;
+  background: #f5f5f5;
+  border-radius: 50px;
+}
+
+.service .icon i {
+  font-size: 32px;
+  transition: 0.5s;
+  line-height: 1;
+  position: relative;
+}
+
+.service h4 {
+  font-weight: 600;
+  margin: 10px 0 15px 0;
+  font-size: 22px;
+}
+
+.service h4 a {
+  color: #000;
+  transition: ease-in-out 0.3s;
+}
+
+.service p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.services i {
+  color: #11dbcf;
+}
+
+/*----about -section*/
+.about-section {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.about-heading {
+  text-transform: uppercase;
+}
+
+.about-heading .about-heading-upper {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.about-heading .about-heading-lower {
+  display: block;
+  font-size: 38px;
+  font-weight: 100;
+}
+
+.bg-faded {
+  background-color: #a6e3e9b9;
+}
+
+.about-button .btn-color {
+  background: #11dbcf;
+  font-weight: bold;
+  color: #fff;
+}
+
+.about-button .btn-color:hover {
+  color: rgba(46, 46, 46, 0.897);
+}
+
+.about {
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .about .about-img {
+    width: 75%;
+    float: right;
+  }
+  .about .about-text {
+    left: 0;
+    width: 60%;
+    margin-top: 6rem;
+    position: absolute;
+  }
+  .about .about-text .about-button {
+    width: 100%;
+    left: 0;
+    position: absolute;
+    bottom: -2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .about .about-text {
+    width: 45%;
+  }
+}
+
+/* ==================================================
+  Medical Camp Section
+  ================================================== */
+.camp {
+  background-color: #a6e3e9b9;
+  padding-bottom: 0;
+}
+
+.camp h2 {
+  color: #000;
+  margin-bottom: 25px;
+}
+
+.camp-grid {
+  margin-top: 65px;
+}
+
+.camp-grid .row {
+  margin: 0;
+}
+
+.camp-grid .row > div {
+  padding: 0;
+}
+
+.camp-grid .row > div .card img {
+  width: 100%;
+}
+
+.camp-grid .row > div .card .camp-text {
+  position: absolute;
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.camp-grid .row > div .card .camp-text > div {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.camp-grid .row > div .card .camp-text .card-title {
+  color: #fff;
+  font-size: 30px;
+}
+
+.camp-grid .row > div .card .camp-text .card-text {
+  color: #fff;
+  opacity: 0.75;
+  padding: 0 45px;
+}
+
+.camp-grid .row > div .card:hover .camp-text {
+  opacity: 1;
+  visibility: visible;
+}
+/*--------------------------------------------------------------
+# Team
+--------------------------------------------------------------*/
+.team {
+  background: #fff;
+}
+
+.team .member {
+  position: relative;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.team .member .image {
+  overflow: hidden;
+  width: 150px;
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+}
+
+.team .member .image img {
+  transition: ease-in-out 0.3s;
+}
+
+.team .member:hover img {
+  transform: scale(1.1);
+}
+
+.team .member h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #36343a;
+}
+
+.team .member span {
+  display: block;
+  font-size: 15px;
+  padding-bottom: 10px;
+  position: relative;
+  font-weight: 500;
+}
+
+.team .member span::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: #b5b3ba;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.team .member p {
+  margin: 10px 0 0 0;
+  font-size: 14px;
+}
+
+.team .member .social {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team .member .social a {
+  transition: ease-in-out 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 32px;
+  height: 32px;
+  background: #a6e3e9b9;
+}
+
+.team .member .social a i {
+  color: #11dbcf;
+  font-size: 16px;
+  margin: 0 2px;
+}
+
+.team .member .social a:hover {
+  background: #a6e3e9b9;
+  text-decoration: none;
+  border: 1px solid #11dbcf;
+}
+
+.team .member .social a + a {
+  margin-left: 8px;
+}
+
+.team .mds-img {
+  margin-top: 15vh;
+  height: 50%;
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.contact-box {
+  color: #000;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(65, 76, 100, 0.05);
+  padding: 20px 0 30px 0;
+  background: #a6e3e9b9;
+}
+
+.contact-box i {
+  font-size: 32px;
+  color: #11dbcf;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.contact-box h3 {
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.contact-box p {
+  padding: 0;
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.contact button {
+  background: #11dbcf;
+  color: #fff;
+  border: none;
+  padding: 10px;
+}
+
+.contact button:hover {
+  background: #a6e3e9b9;
+  color: #000;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  background: #a6e3e9b9;
+}
+.footer .btn-back {
+  background: #fff;
+  color: #a6e3e9b9;
+}
+.footer .text {
+  color: #000;
+}
+
+.footer i {
+  color: #11dbcf;
+}
+
+/*--------------------------------------------------------------
+# Footer-pg
+--------------------------------------------------------------*/
+footer-pg {
+  margin-top: 0%;
+}
+/*--------------------------------------------------------------
+# Form-button
+--------------------------------------------------------------*/
+
+.form-login > input {
+  width: 20vw;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-login > button {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+  background-color: transparent;
+}
+
+.form-login > button:hover {
+  background: #a6e3e9b9;
+  border: 2px solid #a6e3e9b9;
+  text-decoration: none;
+  color: #fff;
+  outline: none;
+}
+
+.form-login {
+  color: #eee;
+}
+
+/*-----------------------------------------------------------------------
+forgot-password-link
+------------------------------------------------------------------------*/
+.forgot-psw {
+  cursor: pointer;
+  font-size: 11px;
+  color: #90bdc1;
+}
+
+.forgot-psw:hover {
+  cursor: pointer;
+  font-size: 11px;
+  color: #eee;
+  text-decoration: none;
+}
+
+/*-----------------------------------------------------------------------
+Model Design and Button
+------------------------------------------------------------------------*/
+
+.ModelBody {
+  background: #8db6b9;
+  background: -webkit-linear-gradient(to right, #8db6b9, #8db6b9);
+  background: linear-gradient(to right, #8db6b9, #8db6b9);
+  line-height: 1em;
+  color: #eee;
+}
+
+.model-main-btn {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid #eee;
+  color: #eee;
+  background-color: transparent;
+  outline: none;
+}
+
+.model-main-btn:hover {
+  background: #eee;
+  border: 2px solid #a6e3e9b9;
+  text-decoration: none;
+  color: rgb(128, 125, 125);
+  outline: none;
+}
+
+.model-footer {
+  background-color: #fff;
+}
+
+.close {
+  outline: none !important;
+}
+
+/*-----------------------------
+home text title dashboard
+-----------------------------*/
+
+.dash-title {
+  color: rgb(178, 178, 184) !important;
+  background-color: aliceblue;
+  display: inline-block;
+  text-align: center;
+}
